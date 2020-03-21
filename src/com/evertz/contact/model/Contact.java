@@ -8,8 +8,18 @@ public class Contact {
 	private String phone;
 
 	public Contact(Integer id, String name, String email, String address, String phone) {
-		super();
+		this(name, email, address, phone);
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phone=" + phone
+				+ "]";
+	}
+
+	public Contact(String name, String email, String address, String phone) {
+		super();
 		this.name = name;
 		this.email = email;
 		this.address = address;
