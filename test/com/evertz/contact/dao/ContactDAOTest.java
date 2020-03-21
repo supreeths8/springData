@@ -40,6 +40,7 @@ class ContactDAOTest {
 		assertTrue(result>0);
 	}
 
+	
 	@Test
 	void testGet() {
 		Integer id = 1;
