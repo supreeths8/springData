@@ -23,7 +23,6 @@ public class MainController {
 		List<Contact> listContact = contactDAO.list();
 		model.addObject("listContact",listContact);
 		model.setViewName("index");
-		
 		return model;
 	}
 	
