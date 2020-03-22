@@ -2,6 +2,8 @@ package com.evertz.contact.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -26,7 +28,7 @@ class ContactDAOTest {
 	
 	@Test
 	void testSave() {
-		Contact contact = new Contact("Steve Jobs","stevejobs@apple.com","cali","123123");
+		Contact contact = new Contact("Bill Gates","bgates@msoft.com","cali","12678123");
 		int result = dao.save(contact);
 		
 		assertTrue(result>0);
@@ -53,12 +55,18 @@ class ContactDAOTest {
 
 	@Test
 	void testDelete() {
-		fail("Not yet implemented");
+		Integer id = 2;
+		int result = dao.delete(id);
+		assertTrue(result>0);
 	}
 
 	@Test
 	void testList() {
-		fail("Not yet implemented");
+		List<Contact> listContacts = dao.list();
+		for(Contact c:listContacts) {
+			System.out.println(c);
+		}
+		assertTrue(!listContacts.isEmpty());;
 	}
 
 }
