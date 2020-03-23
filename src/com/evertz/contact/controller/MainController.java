@@ -2,8 +2,11 @@ package com.evertz.contact.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,4 +37,38 @@ public class MainController {
 		
 		return model;
 	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView saveContact(@ModelAttribute Contact contact) {
+		contactDAO.save(contact);
+		return new ModelAndView("redirect:/");
+		
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editContact(HttpServletRequest request) {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		Contact contact = contactDAO.get(id);
+		
+		ModelAndView model = new ModelAndView("update_form");
+		
+		model.addObject("contact",contact);
+		return model;
+		
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public ModelAndView updateContact(@ModelAttribute Contact contact, HttpServletRequest request) {
+		contactDAO.update(contact);
+		return new ModelAndView("redirect:/");
+		
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView deleteContact(@ModelAttribute Contact contact, HttpServletRequest request) {
+		contactDAO.delete(contact);
+		return new ModelAndView("redirect:/");
+		
+	}
+	
+	
 }

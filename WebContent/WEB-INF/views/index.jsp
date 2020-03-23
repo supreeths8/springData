@@ -10,6 +10,9 @@
 <body>
 	<div align="center">
 		<h1>Contacts List</h1>
+		<a href="/ContactManager/new">New Contact</a>
+		<br>
+		<br>
 		<table border="1" cellpadding="3">
 			<tr>
 				<th>ID</th>
@@ -27,9 +30,8 @@
                     <td>${contact.address}</td>
                     <td>${contact.phone}</td>
                     <td>
-                        <a href="/editContact?id=${contact.id}">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/deleteContact?id=${contact.id}">Delete</a>
+                        <a href="/ContactManager/edit?id=${contact.id}">Edit</a>
+                        <a href="/ContactManager/delete?id=${contact.id}">Delete</a>
                     </td>
                              
                 </tr>

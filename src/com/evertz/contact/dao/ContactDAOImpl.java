@@ -56,7 +56,8 @@ public class ContactDAOImpl implements ContactDAO {
 	}
 
 	@Override
-	public int delete(Integer id) {
+	public int delete(Contact contact) {
+		int id = contact.getId();
 		String sql = "DELETE FROM contact WHERE contact_id="+id;
 		return jdbcTemplate.update(sql);
 	}
@@ -83,6 +84,11 @@ public class ContactDAOImpl implements ContactDAO {
 		return jdbcTemplate.query(sql, rowMapper);
 		
 	
+	}
+	@Override
+	public int delete(Integer id) {
+		String sql = "DELETE FROM contact WHERE contact_id="+id;
+		return jdbcTemplate.update(sql);
 	}
 
 }
