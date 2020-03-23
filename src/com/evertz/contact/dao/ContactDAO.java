@@ -14,5 +14,7 @@ public interface ContactDAO {
 	public int delete(Integer id);
 
 	public List<Contact> list();
+
+	int delete(Contact contact);
 	
 }

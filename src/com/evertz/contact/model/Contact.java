@@ -7,12 +7,34 @@ public class Contact {
 	private String address;
 	private String phone;
 
+	
+	public Contact() {
+		
+	}
 	public Contact(Integer id, String name, String email, String address, String phone) {
-		super();
+		this(name, email, address, phone);
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phone=" + phone
+				+ "]";
+	}
+
+	public Contact(String name, String email, String address, String phone) {
+		super();
 		this.name = name;
 		this.email = email;
 		this.address = address;
+		this.phone = phone;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
