@@ -29,6 +29,8 @@ public class MainController {
 		return model;
 	}
 	
+	
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView newContact(ModelAndView model) {
 		Contact newContact = new Contact();
@@ -37,6 +39,8 @@ public class MainController {
 		
 		return model;
 	}
+	
+	
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveContact(@ModelAttribute Contact contact) {
