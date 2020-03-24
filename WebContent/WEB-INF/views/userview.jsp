@@ -11,8 +11,7 @@
 	<div align="center">
 		<h1>Welcome ${userContact.name}</h1>
 		<h2>Account Details</h2>
-		<br>
-		<br>
+		<br> <br>
 		<table border="1" cellpadding="3">
 			<tr>
 				<th>ID</th>
@@ -23,14 +22,30 @@
 				<th>Balance</th>
 			</tr>
 			<tr>
-                    <td>${userContact.id}</td>
-                    <td>${userContact.name}</td>
-                    <td>${userContact.email}</td>
-                    <td>${userContact.address}</td>
-                    <td>${userContact.phone}</td>
-                    <td>${userContact.balance}</td>                           
-                </tr>
+				<td>${userContact.id}</td>
+				<td>${userContact.name}</td>
+				<td>${userContact.email}</td>
+				<td>${userContact.address}</td>
+				<td>${userContact.phone}</td>
+				<td>${userContact.balance}</td>
+			</tr>
 		</table>
 	</div>
+	<br>
+	<form>
+		<div align="center">
+			<table>
+				<tr>
+					<td colspan="2" align="center"><button type="submit"
+							formaction="/withdraw">Withdraw</button></td>
+
+					<td></td>
+					<td colspan="2" align="center"><button type="submit"
+							formaction="/deposit">Deposit</button></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+
 </body>
 </html>

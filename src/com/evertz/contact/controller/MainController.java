@@ -60,12 +60,6 @@ public class MainController {
 		String password = req.getParameter("password");
 		Contact userContact = contactDAO.getBalance(contactDAO.get(id));
 		model.addObject("userContact", userContact);
-		System.out.println(userContact.getId());
-		System.out.println(userContact.getPassword());
-		
-		System.out.println(id);
-		System.out.println(password);
-		
 		if ((id==userContact.getId()) && password.equals(userContact.getPassword())) {
 			model.setViewName("userview");
 			return model;
