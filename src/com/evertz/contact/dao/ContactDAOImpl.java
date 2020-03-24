@@ -1,5 +1,6 @@
 package com.evertz.contact.dao;
 
+import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.evertz.contact.model.Contact;
 
@@ -31,9 +33,9 @@ public class ContactDAOImpl implements ContactDAO {
 	}
 	@Override
 	public int save(Contact contact) {
-		String sql = "INSERT INTO contact (name,email,address,phone) VALUE (?,?,?,?)";
+		String sql = "INSERT INTO contact (name,email,address,phone,password) VALUE (?,?,?,?,?)";
 		saveBalance(contact);
-		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone());
+		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(),contact.getPassword());
 	
 	}
 
@@ -42,7 +44,30 @@ public class ContactDAOImpl implements ContactDAO {
 		String sql = "UPDATE contact SET name=?, email=?, address=?, phone=?, password=? WHERE contact_id=?";
 		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getPassword(), contact.getId());
 	}
+	
+	
+	
+	public Contact getBalance(Contact contact) {
+		String sql = "SELECT * FROM balance WHERE contact_id="+contact.getId();
+		ResultSetExtractor<Contact> extractor = new ResultSetExtractor<Contact>() {
 
+			@Override
+			public Contact extractData(ResultSet rs) throws SQLException, DataAccessException {
+				if(rs.next()) {
+					int id  = rs.getInt("contact_id");
+					float amount = rs.getFloat("amount");
+					
+					return new Contact(id, contact.getName(), contact.getEmail(), contact.getAddress(), contact.getPhone(), contact.getPassword(),amount);
+
+				}
+				return null;
+			}
+		};
+		return jdbcTemplate.query(sql, extractor);
+	}
+	
+	
+	
 	@Override
 	public Contact get(Integer id) {
 		String sql = "SELECT * FROM contact WHERE contact_id="+id;
@@ -55,7 +80,10 @@ public class ContactDAOImpl implements ContactDAO {
 					String email  = rs.getString("email");
 					String address  = rs.getString("address");
 					String phone  = rs.getString("phone");
-					return new Contact(id, name, email, address, phone);
+					String password = rs.getString("password");
+					//float balance = getBalance(id);
+					
+					return new Contact(id, name, email, address, phone, password);
 
 				}
 				return null;
@@ -64,6 +92,7 @@ public class ContactDAOImpl implements ContactDAO {
 		return jdbcTemplate.query(sql, extractor);
 	}
 
+	
 	
 	public int deleteBalance(int id) {
 		String sql = "DELETE FROM balance WHERE contact_id="+id;

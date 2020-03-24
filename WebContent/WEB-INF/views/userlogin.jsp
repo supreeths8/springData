@@ -11,7 +11,7 @@
 <body>
 	<div align="center">
 		<h1>User Login</h1>
-		<form id="contact" action="index" method="POST">
+		<form id="contact" action="userview" method="POST">
 			<table>
 			
 				<tr>

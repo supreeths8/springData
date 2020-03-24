@@ -51,6 +51,29 @@ public class MainController {
 			return new ModelAndView("redirect:/adminlogin");
 		}
 	}
+	
+	
+	
+	@RequestMapping(value = "/userview")
+	public ModelAndView userContact(ModelAndView model, HttpServletRequest req) {
+		int id = Integer.parseInt(req.getParameter("id"));
+		String password = req.getParameter("password");
+		Contact userContact = contactDAO.getBalance(contactDAO.get(id));
+		model.addObject("userContact", userContact);
+		System.out.println(userContact.getId());
+		System.out.println(userContact.getPassword());
+		
+		System.out.println(id);
+		System.out.println(password);
+		
+		if ((id==userContact.getId()) && password.equals(userContact.getPassword())) {
+			model.setViewName("userview");
+			return model;
+		} else {
+			return new ModelAndView("redirect:/userlogin");
+		}
+	}
+	
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView newContact(ModelAndView model) {
