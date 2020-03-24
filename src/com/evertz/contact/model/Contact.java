@@ -6,8 +6,15 @@ public class Contact {
 	private String email;
 	private String address;
 	private String phone;
+	private String password;
 
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Contact() {
 		
 	}
@@ -16,18 +23,28 @@ public class Contact {
 		this.id = id;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "Contact [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phone=" + phone
-				+ "]";
+				+ ", password=" + password + "]";
 	}
-
+	
 	public Contact(String name, String email, String address, String phone) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.address = address;
 		this.phone = phone;
+	}
+	
+	public Contact(String name, String email, String address, String phone, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.password = password;
 	}
 
 	public String getPhone() {

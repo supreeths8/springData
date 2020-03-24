@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Contact Manager Home</title>
+<title>Contact Manager</title>
 </head>
 <body>
 	<div align="center">

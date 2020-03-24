@@ -28,7 +28,7 @@ class ContactDAOTest {
 	
 	@Test
 	void testSave() {
-		Contact contact = new Contact("Bill Gates","bgates@msoft.com","cali","12678123");
+		Contact contact = new Contact("Bill Gates","bgates@msoft.com","cali","12678123","pass");
 		int result = dao.save(contact);
 		
 		assertTrue(result>0);

@@ -23,15 +23,15 @@ public class ContactDAOImpl implements ContactDAO {
 	}
 	@Override
 	public int save(Contact contact) {
-		String sql = "INSERT INTO contact (name,email,address,phone) VALUE (?,?,?,?)";
-		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone());
+		String sql = "INSERT INTO contact (name,email,address,phone,password) VALUE (?,?,?,?,?)";
+		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getPassword());
 	
 	}
 
 	@Override
 	public int update(Contact contact) {
-		String sql = "UPDATE contact SET name=?, email=?, address=?, phone=? WHERE contact_id=?";
-		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getId());
+		String sql = "UPDATE contact SET name=?, email=?, address=?, phone=?, password=? WHERE contact_id=?";
+		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getPassword(), contact.getId());
 	}
 
 	@Override
