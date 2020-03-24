@@ -1,6 +1,6 @@
 package com.evertz.contact.model;
 
-public class User {
+public class Admin {
 	private Integer id;
 	private String name;
 	private String email;
@@ -8,7 +8,23 @@ public class User {
 	private String phone;
 	private String password;
 
-	public User(String name, String email, String address, String phone, String password) {
+public Admin() {
+		
+	}
+	public Admin(Integer id, String name, String email, String address, String phone) {
+		this(name, email, address, phone);
+		this.id = id;
+	}
+	
+	public Admin(String name, String email, String address, String phone) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+	}
+	
+	public Admin(String name, String email, String address, String phone, String password) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -16,12 +32,7 @@ public class User {
 		this.phone = phone;
 		this.password = password;
 	}
-
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public Integer getId() {
 		return id;
 	}

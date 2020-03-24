@@ -48,7 +48,7 @@ public class MainController {
 			model.setViewName("index");
 			return model;
 		} else {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/adminlogin");
 		}
 	}
 
@@ -97,11 +97,6 @@ public class MainController {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteContact(@ModelAttribute Contact contact, HttpServletRequest request) {
 		contactDAO.delete(contact);
-//		List<Contact> listContact = contactDAO.list();
-//		ModelAndView model = new ModelAndView();
-//		model.addObject("listContact", listContact);
-//		model.setViewName("index");
-//		return model;
 		return returnList();
 
 	}

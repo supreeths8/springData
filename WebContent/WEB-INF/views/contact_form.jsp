@@ -35,6 +35,11 @@
 					<td>
 				</tr>
 				<tr>
+					<td>New Password</td>
+					<td><form:input path="password" />
+					<td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Save" /></td>
 				</tr>
 			</table>

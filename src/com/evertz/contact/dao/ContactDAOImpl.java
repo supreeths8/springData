@@ -1,12 +1,15 @@
 package com.evertz.contact.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,10 +24,16 @@ public class ContactDAOImpl implements ContactDAO {
 	public ContactDAOImpl(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	public int saveBalance(Contact contact) {
+		String sql = "INSERT INTO balance (amount) VALUE (?)";
+		return jdbcTemplate.update(sql,0);
+	}
 	@Override
 	public int save(Contact contact) {
-		String sql = "INSERT INTO contact (name,email,address,phone,password) VALUE (?,?,?,?,?)";
-		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getPassword());
+		String sql = "INSERT INTO contact (name,email,address,phone) VALUE (?,?,?,?)";
+		saveBalance(contact);
+		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone());
 	
 	}
 
@@ -55,9 +64,17 @@ public class ContactDAOImpl implements ContactDAO {
 		return jdbcTemplate.query(sql, extractor);
 	}
 
+	
+	public int deleteBalance(int id) {
+		String sql = "DELETE FROM balance WHERE contact_id="+id;
+		return jdbcTemplate.update(sql);
+	}
+	
+	
 	@Override
 	public int delete(Contact contact) {
 		int id = contact.getId();
+		deleteBalance(id);
 		String sql = "DELETE FROM contact WHERE contact_id="+id;
 		return jdbcTemplate.update(sql);
 	}
