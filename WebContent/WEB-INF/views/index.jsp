@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Contact Manager</title>
+<title>Accounts Manager</title>
 </head>
 <body>
 	<div align="center">
-		<h1>Contacts List</h1>
+		<h1>Accounts List</h1>
 		<a href="/ContactManager/new">New Contact</a> <br> <br>
 		<table border="1" cellpadding="3">
 			<tr>

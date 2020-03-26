@@ -6,19 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New/Edit Contact</title>
+<title>Account Manager</title>
 </head>
 <body>
 	<div align="center">
-		<h1>Edit Contact</h1>
+		<h1>Edit User Account</h1>
 		<form:form action="update" method="get" modelAttribute="contact">
 			<table>
 				
-			<tr>
-					<td>ID</td>
-					<td><form:input path="id" />
-					<td>
-				</tr>
 				<tr>
 					<td>Name</td>
 					<td><form:input path="name" />
