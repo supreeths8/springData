@@ -17,4 +17,9 @@ public interface ContactDAO {
 
 	int delete(Contact contact);
 	
+	public Contact getBalance(Contact contact);
+
+	public int updateBalance(Contact contact);
+
+	
 }

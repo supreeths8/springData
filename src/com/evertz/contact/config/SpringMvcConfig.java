@@ -13,6 +13,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.evertz.contact.dao.ContactDAO;
 import com.evertz.contact.dao.ContactDAOImpl;
+import com.evertz.contact.dao.AdminDAO;
+import com.evertz.contact.dao.AdminDAOImpl;
 
 @Configuration
 @EnableWebMvc
@@ -42,5 +44,10 @@ public class SpringMvcConfig implements WebMvcConfigurer{
 	@Bean
 	public ContactDAO getContactDAO(){
 		return new ContactDAOImpl(getDataSource());
+	}
+	
+	@Bean
+	public AdminDAO getUserDAO(){
+		return new AdminDAOImpl(getDataSource());
 	}
 }

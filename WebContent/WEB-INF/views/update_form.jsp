@@ -13,8 +13,12 @@
 		<h1>Edit Contact</h1>
 		<form:form action="update" method="get" modelAttribute="contact">
 			<table>
-						<form:hidden path="id" />
-			
+				
+			<tr>
+					<td>ID</td>
+					<td><form:input path="id" />
+					<td>
+				</tr>
 				<tr>
 					<td>Name</td>
 					<td><form:input path="name" />

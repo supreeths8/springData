@@ -26,11 +26,17 @@ class ContactDAOTest {
 		dao = new ContactDAOImpl(dataSource);
 	}
 	
+//	@Test
+//	void testSave() {
+//		Contact contact = new Contact("Bill Gates","bgates@msoft.com","cali","12678123","pass");
+//		int result = dao.save(contact);
+//		
+//		assertTrue(result>0);
+//	}
 	@Test
-	void testSave() {
-		Contact contact = new Contact("Bill Gates","bgates@msoft.com","cali","12678123");
-		int result = dao.save(contact);
-		
+	public void testUpdateBalance() {
+		Contact contact = new Contact(2,"Steve Jobs","stevej@apple.com","cali","123123","pass",1000);
+		int result = dao.updateBalance(contact);
 		assertTrue(result>0);
 	}
 
