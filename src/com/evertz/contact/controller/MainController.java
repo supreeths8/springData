@@ -57,6 +57,7 @@ public class MainController {
 
 	@RequestMapping(value = "/userview")
 	public ModelAndView userContact(ModelAndView model, HttpServletRequest req) {
+		try {
 		int id = Integer.parseInt(req.getParameter("id"));
 		String password = req.getParameter("password");
 		userContact = contactDAO.getBalance(contactDAO.get(id));
@@ -67,6 +68,13 @@ public class MainController {
 		} else {
 			return new ModelAndView("redirect:/userlogin");
 		}
+		}
+		catch (Exception e) {
+			
+			return new ModelAndView("redirect:/userlogin");
+
+		}
+		
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -119,6 +127,7 @@ public class MainController {
 
 	@RequestMapping(value = "/deposit", method = RequestMethod.POST)
 	public ModelAndView deposit(HttpServletRequest req) {
+		try {
 		float depositAmount = Float.parseFloat(req.getParameter("depositAmount"));
 		userContact.setBalance(userContact.getBalance() + depositAmount);
 		contactDAO.updateBalance(userContact);
@@ -126,11 +135,19 @@ public class MainController {
 		model.addObject("userContact", userContact);
 		model.setViewName("userview");
 		return model;
+		}
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView();
+			model.addObject("userContact", userContact);
+			model.setViewName("userview");
+			return model;
+		}
 
 	}
 	
 	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
 	public ModelAndView withdraw(HttpServletRequest req) {
+		try {
 		float withdrawAmount = Float.parseFloat(req.getParameter("withdrawAmount"));
 		ModelAndView model = new ModelAndView();
 		model.addObject("userContact",userContact);
@@ -141,6 +158,13 @@ public class MainController {
 			return model;
 		}
 		else {
+			model.setViewName("userview");
+			return model;
+		}
+		}
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView();
+			model.addObject("userContact", userContact);
 			model.setViewName("userview");
 			return model;
 		}
