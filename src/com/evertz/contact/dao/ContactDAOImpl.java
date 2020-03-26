@@ -41,8 +41,14 @@ public class ContactDAOImpl implements ContactDAO {
 
 	@Override
 	public int update(Contact contact) {
-		String sql = "UPDATE contact SET name=?, email=?, address=?, phone=?, password=? WHERE contact_id=?";
-		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getPassword(), contact.getId());
+		String sql = "UPDATE contact SET name=?, email=?, address=?, phone=? WHERE contact_id=?";
+		return jdbcTemplate.update(sql, contact.getName(), contact.getEmail(),contact.getAddress(),contact.getPhone(), contact.getId());
+	}
+	
+	public int updateBalance(Contact contact) {
+	
+		String sql = "UPDATE balance SET amount=? WHERE contact_id=?";
+		return jdbcTemplate.update(sql,contact.getBalance(),contact.getId());
 	}
 	
 	
@@ -80,9 +86,7 @@ public class ContactDAOImpl implements ContactDAO {
 					String email  = rs.getString("email");
 					String address  = rs.getString("address");
 					String phone  = rs.getString("phone");
-					String password = rs.getString("password");
-					//float balance = getBalance(id);
-					
+					String password = rs.getString("password");					
 					return new Contact(id, name, email, address, phone, password);
 
 				}
@@ -121,7 +125,10 @@ public class ContactDAOImpl implements ContactDAO {
 				String email  = rs.getString("email");
 				String address  = rs.getString("address");
 				String phone  = rs.getString("phone");
-				return new Contact(id, name, email, address, phone);
+				String password = rs.getString("password");
+				Contact c = new Contact(id, name, email, address, phone,password);
+				
+				return getBalance(c);
 			}
 			
 		};
@@ -136,5 +143,6 @@ public class ContactDAOImpl implements ContactDAO {
 		String sql = "DELETE FROM contact WHERE contact_id="+id;
 		return jdbcTemplate.update(sql);
 	}
+
 
 }

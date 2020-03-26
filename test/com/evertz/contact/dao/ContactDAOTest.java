@@ -33,6 +33,12 @@ class ContactDAOTest {
 //		
 //		assertTrue(result>0);
 //	}
+	@Test
+	public void testUpdateBalance() {
+		Contact contact = new Contact(2,"Steve Jobs","stevej@apple.com","cali","123123","pass",1000);
+		int result = dao.updateBalance(contact);
+		assertTrue(result>0);
+	}
 
 	@Test
 	void testUpdate() {
