@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New/Edit Contact</title>
+<title>Account Manager</title>
 </head>
 <body>
 	<div align="center">
-		<h1>New Contact</h1>
+		<h1>New Account</h1>
 		<form:form action="save" method="post" modelAttribute="contact">
 			<table>
 			<form:hidden path="id" />
