@@ -21,16 +21,16 @@
 				<th>Balance</th>
 				<th>Action</th>
 			</tr>
-			<c:forEach var="contact" items="${listContact}">
+			<c:forEach var="contactList" items="${listContact}">
 				<tr>
-					<td>${contact.id}</td>
-					<td>${contact.name}</td>
-					<td>${contact.email}</td>
-					<td>${contact.address}</td>
-					<td>${contact.phone}</td>
-					<td>${contact.balance}</td>
-					<td><a href="/ContactManager/edit?id=${contact.id}">Edit</a> <a
-						href="/ContactManager/delete?id=${contact.id}">Delete</a></td>
+					<td>${contactList.id}</td>
+					<td>${contactList.name}</td>
+					<td>${contactList.email}</td>
+					<td>${contactList.address}</td>
+					<td>${contactList.phone}</td>
+					<td>${contactList.balance}</td>
+					<td><a href="/ContactManager/edit?id=${contactList.id}">Edit</a> <a
+						href="/ContactManager/delete?id=${contactList.id}">Delete</a></td>
 
 				</tr>
 			</c:forEach>
