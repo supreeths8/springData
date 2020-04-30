@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.evertz.contact.dao.ContactDAO;
 import com.evertz.contact.model.Contact;
 import com.evertz.contact.service.ContactService;
 

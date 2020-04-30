@@ -9,7 +9,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.evertz.contact.model"})
+@EnableJpaRepositories(basePackages = {"com.evertz.contact"})
 public class JpaConfig {
 	
 	@Bean
