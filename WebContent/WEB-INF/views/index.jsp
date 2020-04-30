@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<h1>Accounts List</h1>
+		<h2>${user.id}</h2>
 		<a href="/ContactManager/new">New Contact</a> <br> <br>
 		<table border="1" cellpadding="3">
 			<tr>
