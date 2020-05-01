@@ -11,6 +11,9 @@
 	<div align="center">
 		<h1>Accounts List</h1>
 		<h2>${user.id}</h2>
+		<h2>Customer Search</h2>
+		<input type="text">
+		<a href="/ContactManager/search">Search</a><br><br><br>
 		<a href="/ContactManager/new">New Contact</a> <br> <br>
 		<table border="1" cellpadding="3">
 			<tr>
@@ -29,7 +32,7 @@
 					<td>${contactList.email}</td>
 					<td>${contactList.address}</td>
 					<td>${contactList.phone}</td>
-					<td>${contactList.balance}</td>
+				
 					<td><a href="/ContactManager/edit?id=${contactList.id}">Edit</a> <a
 						href="/ContactManager/delete?id=${contactList.id}">Delete</a></td>
 

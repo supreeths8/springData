@@ -20,6 +20,11 @@ public class ContactService {
 		return (List<Contact>) contactRepo.findAll();	
 	}
 	
+	@Transactional
+	public void save(Contact contact) {
+		contactRepo.save(contact);
+	}
+	
 	
 	
 }
