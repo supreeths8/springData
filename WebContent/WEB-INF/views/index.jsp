@@ -25,14 +25,14 @@
 				<th>Balance</th>
 				<th>Action</th>
 			</tr>
-			<c:forEach var="contactList" items="${listContact}">
+			<c:forEach var="contactList" items="${listContact}"  varStatus="status">
 				<tr>
 					<td>${contactList.id}</td>
 					<td>${contactList.name}</td>
 					<td>${contactList.email}</td>
 					<td>${contactList.address}</td>
 					<td>${contactList.phone}</td>
-				
+					<td><c:out value="${listBalance[status.index].amount}"/></td>
 					<td><a href="/ContactManager/edit?id=${contactList.id}">Edit</a> <a
 						href="/ContactManager/delete?id=${contactList.id}">Delete</a></td>
 

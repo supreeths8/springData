@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.evertz.contact.model.Admin;
+import com.evertz.contact.model.Balance;
 import com.evertz.contact.model.Contact;
+import com.evertz.contact.service.BalanceService;
 import com.evertz.contact.service.ContactService;
 
 @Controller
@@ -21,6 +23,9 @@ public class MainController {
 
 	@Autowired
 	private ContactService service;
+	
+	@Autowired
+	private BalanceService balanceService;
 	
 	@Autowired
 	private Admin admin;
@@ -44,9 +49,11 @@ public class MainController {
 			model.setViewName("adminlogin");
 		}
 		else if(admin.getId().equals("admin") && admin.getPassword().equals("admin")) {
-			session.setAttribute("user", admin);
+			session.setAttribute("admin", admin);
 			List<Contact> listContact = service.listAll();
-			model.addObject("listContact", listContact);
+			List<Balance> listBalance = balanceService.listAll();
+ 			model.addObject("listContact", listContact);
+ 			model.addObject("listBalance", listBalance);
 			model.setViewName("index");
 		}
 		else {
@@ -72,7 +79,7 @@ public class MainController {
 		Contact newContact = new Contact();
 		ModelAndView model = new ModelAndView();
 		
-		if(session.getAttribute("user")!=null) {
+		if(session.getAttribute("admin")!=null) {
 			model.addObject(newContact);
 			model.setViewName("contact_form");
 		}
@@ -84,10 +91,16 @@ public class MainController {
 		return model;
 	}
 	
+	public void saveFunction(Contact saveContact, Balance saveBalance) {
+		saveBalance.setAmount(0);
+		service.save(saveContact);
+		balanceService.save(saveBalance);
+	}
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveContact(@ModelAttribute Contact contact) {
+	public ModelAndView saveContact(@ModelAttribute Contact contact, Balance balance) {
 		ModelAndView model = new ModelAndView();
-		service.save(contact);
+		saveFunction(contact,balance);
 		model.setViewName("index");
 		return model;
 	}
