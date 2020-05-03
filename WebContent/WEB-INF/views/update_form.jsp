@@ -11,9 +11,14 @@
 <body>
 	<div align="center">
 		<h1>Edit User Account</h1>
-		<form:form action="update" method="get" modelAttribute="contact">
+		<form:form action="update" method="post" modelAttribute="contact">
 			<table>
-				
+
+				<tr>
+					<td>ID</td>
+					<td>${contact.id}<form:hidden path="id" />
+					</td>
+				</tr>
 				<tr>
 					<td>Name</td>
 					<td><form:input path="name" />
@@ -35,7 +40,13 @@
 					<td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="Save Changes" /></td>
+					<td>Password</td>
+					<td><form:input path="password" />
+					<td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="Save Changes" /></td>
 				</tr>
 			</table>
 

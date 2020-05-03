@@ -10,7 +10,7 @@
 <body>
 	<div align="center">
 		<h1>Accounts List</h1>
-		<h2>${user.id}</h2>
+		<h2>${admin.id}</h2>
 		<h2>Customer Search</h2>
 		<input type="text">
 		<a href="/ContactManager/search">Search</a><br><br><br>
@@ -25,7 +25,7 @@
 				<th>Balance</th>
 				<th>Action</th>
 			</tr>
-			<c:forEach var="contactList" items="${listContact}"  varStatus="status">
+			<c:forEach var="contactList" items="${listContact}" varStatus="status">
 				<tr>
 					<td>${contactList.id}</td>
 					<td>${contactList.name}</td>

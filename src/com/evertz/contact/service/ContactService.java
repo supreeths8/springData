@@ -1,6 +1,7 @@
 package com.evertz.contact.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,12 @@ public class ContactService {
 	@Transactional
 	public void save(Contact contact) {
 		contactRepo.save(contact);
+
 	}
 	
-	
+	public Contact get(int id) {
+		Optional<Contact> result = contactRepo.findById(id);
+		return result.get();
+	}
 	
 }
