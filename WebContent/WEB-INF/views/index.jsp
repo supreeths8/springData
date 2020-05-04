@@ -12,11 +12,12 @@
 		<h1>Accounts List</h1>
 		<h2>Customer Search</h2>
 		<form action="search" method="post">
+			<h3 style="color:red">${message}</h3>
+
 			<input type="text" name="keyword" id="keyword"> <input
 				type="submit" value="Search" /> <br> <input type="radio"
 				id="byId" name="byId" value="id"> <label for="byId">By
-				ID</label><br> <input type="radio" id="byEmail" name="byEmail"
-				value="email"> <label for="byEmail">By Email</label> <br>
+				ID</label><br> <br>
 		</form>
 
 		<br> <br> <a href="/ContactManager/new">New Contact</a> <br>
@@ -52,6 +53,7 @@
 	<form>
 		<div align="center">
 			<button type="submit" formaction="/ContactManager/logout">Logout</button>
+			<button type="submit" formaction="/ContactManager/index">Index</button>
 
 		</div>
 	</form>

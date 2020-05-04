@@ -66,6 +66,10 @@ public class MainController {
 	@RequestMapping(value = "/index")
 	public ModelAndView login(HttpServletRequest req, HttpSession session) {
 		ModelAndView model = new ModelAndView();
+		if(session.getAttribute("admin") != null) {
+			model = returnIndex(model);
+			return model;
+		}
 		admin.setId(req.getParameter("id"));
 		admin.setPassword(req.getParameter("password"));
 		session.setAttribute("admin", admin);
@@ -86,7 +90,7 @@ public class MainController {
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView model = new ModelAndView();
 		session.invalidate();
-		model.setViewName("adminlogin");
+		model.setViewName("welcome");
 		return model;
 	}
 
@@ -252,9 +256,13 @@ public class MainController {
 	@RequestMapping(value = "/search")
 	public ModelAndView searchIndex(HttpServletRequest req) {
 		ModelAndView model = new ModelAndView();
+		if((req.getParameter("byId") == null) || (req.getParameter("keyword") == null)) {
+			returnIndex(model);
+			model.addObject("message", "Check search parameters");
+			return model;
+		}
 		List<Contact> searchContactResults = new ArrayList<Contact> ();
 		List<Balance> searchBalanceResults = new ArrayList<Balance> ();
-		System.out.println(req.getParameter("byId"));
 		if(req.getParameter("byId").contentEquals("id")) {
 			Balance balance = balanceService.get(Integer.parseInt(req.getParameter("keyword")));
 			searchContactResults.add(service.searchById(req.getParameter("keyword")));

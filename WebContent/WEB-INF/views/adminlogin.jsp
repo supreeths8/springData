@@ -30,7 +30,7 @@
 			</table>
 
 		</form>
-		<h2>${message}</h2>
+			<h3 style="color:red">${message}</h3>
 
 	</div>
 
