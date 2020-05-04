@@ -32,4 +32,18 @@ public class ContactService {
 		return result.get();
 	}
 	
+	public void delete(int id) {
+		contactRepo.deleteById(id);
+	}
+	
+	
+	public Contact searchById(String value) {
+			return get(Integer.parseInt(value));
+		}
+	
+//	public List<Contact> searchByEmail(String value) {
+//		return contactRepo.findByEmail(value);
+//	}
+//		
+	
 }
